@@ -1,0 +1,145 @@
+@import "tailwindcss";
+
+@theme {
+  /* ——— VMUN 26 brand system (vmun identity design) ——— */
+  --color-ink: #233129; /* deepest green-black — overlays, mobile menu */
+  --color-forest: #344c36; /* page background — brand forest green */
+  --color-forest2: #3f5c43; /* raised green surface */
+  --color-forest3: #4b6b50; /* hover green surface */
+  --color-black0: #000000; /* brand black — footer, deep panels */
+  --color-cream: #fff6e7; /* brand cream — primary text */
+  --color-parch: #d8dfcf; /* dimmed cream — secondary text */
+  --color-amber: #f8ac1b; /* brand amber — primary accent */
+  --color-orange: #fc6036; /* brand orange — secondary accent */
+  --color-terra: #b7693b; /* terracotta — tertiary accent */
+  --color-line: rgba(255, 246, 231, 0.14); /* hairline borders */
+
+  --font-display: var(--font-bitter);
+  --font-sans: var(--font-inter);
+  --font-mono: var(--font-jb);
+
+  --animate-marquee: marquee 36s linear infinite;
+  --animate-marquee-slow: marquee 58s linear infinite;
+  --animate-float: float 9s ease-in-out infinite;
+  --animate-float-slow: float 14s ease-in-out infinite;
+  --animate-orb: orb 24s ease-in-out infinite alternate;
+  --animate-orb2: orb2 30s ease-in-out infinite alternate;
+  --animate-pulse-dot: pulse-dot 2.2s ease-in-out infinite;
+  --animate-spin-slow: spin 26s linear infinite;
+  --animate-scroll-hint: scroll-hint 2.4s ease-in-out infinite;
+
+  @keyframes marquee {
+    from { transform: translateX(0); }
+    to { transform: translateX(-50%); }
+  }
+  @keyframes float {
+    0%, 100% { transform: translateY(0); }
+    50% { transform: translateY(-14px); }
+  }
+  @keyframes orb {
+    0% { transform: translate(0, 0) scale(1); }
+    100% { transform: translate(60px, -40px) scale(1.15); }
+  }
+  @keyframes orb2 {
+    0% { transform: translate(0, 0) scale(1.1); }
+    100% { transform: translate(-50px, 30px) scale(0.95); }
+  }
+  @keyframes pulse-dot {
+    0%, 100% { opacity: 1; box-shadow: 0 0 0 0 rgba(248, 172, 27, 0.45); }
+    55% { opacity: 0.75; box-shadow: 0 0 0 7px rgba(248, 172, 27, 0); }
+  }
+  @keyframes scroll-hint {
+    0% { transform: translateY(0); opacity: 1; }
+    70% { transform: translateY(10px); opacity: 0; }
+    100% { transform: translateY(0); opacity: 0; }
+  }
+}
+
+/* ——— base ——— */
+html {
+  scroll-behavior: smooth;
+}
+body {
+  background: var(--color-forest);
+  color: var(--color-cream);
+  font-family: var(--font-sans);
+  -webkit-font-smoothing: antialiased;
+  overflow-x: hidden;
+}
+::selection {
+  background: var(--color-amber);
+  color: var(--color-ink);
+}
+::-webkit-scrollbar {
+  width: 10px;
+}
+::-webkit-scrollbar-track {
+  background: var(--color-forest);
+}
+::-webkit-scrollbar-thumb {
+  background: var(--color-forest2);
+  border-radius: 8px;
+  border: 2px solid var(--color-forest);
+}
+::-webkit-scrollbar-thumb:hover {
+  background: var(--color-forest3);
+}
+
+/* ——— components ——— */
+@layer components {
+  .label {
+    font-family: var(--font-mono);
+    font-size: 10px;
+    letter-spacing: 0.22em;
+    text-transform: uppercase;
+    color: var(--color-parch);
+  }
+  .label-amber {
+    font-family: var(--font-mono);
+    font-size: 10px;
+    letter-spacing: 0.22em;
+    text-transform: uppercase;
+    color: var(--color-amber);
+  }
+  .container-x {
+    width: 100%;
+    max-width: 76rem;
+    margin-inline: auto;
+    padding-inline: 1.5rem;
+  }
+  .hairline {
+    border-color: var(--color-line);
+  }
+  .glass {
+    background: rgba(0, 0, 0, 0.45);
+    backdrop-filter: blur(14px);
+    -webkit-backdrop-filter: blur(14px);
+  }
+  .card-surface {
+    background: linear-gradient(160deg, rgba(63, 92, 67, 0.5), rgba(35, 49, 41, 0.55));
+    border: 1px solid var(--color-line);
+  }
+  .text-balance {
+    text-wrap: balance;
+  }
+}
+
+/* film grain overlay */
+.grain::after {
+  content: "";
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+  z-index: 60;
+  opacity: 0.05;
+  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='2' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html { scroll-behavior: auto; }
+  *, *::before, *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+}
