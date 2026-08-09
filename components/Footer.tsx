@@ -18,7 +18,7 @@ export default function Footer() {
               <span className="grid h-12 w-12 place-items-center overflow-hidden rounded-xl bg-black0 ring-1 ring-amber/40">
                 {/* eslint-disable-next-line @next/next/no-img-element */}
                 <img
-                  src="/vmun-logo.png"
+                  src="vmun-logo.png"
                   alt="VMUN 2026"
                   className="h-11 w-11 object-contain mix-blend-screen"
                 />

@@ -37,7 +37,7 @@ export default function Hero() {
         >
           {/* eslint-disable-next-line @next/next/no-img-element */}
           <img
-            src="/vmun-logo.png"
+            src="vmun-logo.png"
             alt="Vantalyne Model United Nations 2026"
             className="w-64 mix-blend-screen sm:w-80"
           />

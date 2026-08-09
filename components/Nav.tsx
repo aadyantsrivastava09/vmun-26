@@ -51,7 +51,7 @@ export default function Nav() {
             <span className="grid h-10 w-10 place-items-center overflow-hidden rounded-xl bg-black0 ring-1 ring-amber/40 transition-transform duration-300 group-hover:scale-105">
               {/* eslint-disable-next-line @next/next/no-img-element */}
               <img
-                src="/vmun-logo.png"
+                src="vmun-logo.png"
                 alt="VMUN 2026"
                 className="h-9 w-9 object-contain mix-blend-screen"
               />
